@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Navigator.Routes
+﻿namespace Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/RoutePopDisposition-class.html
