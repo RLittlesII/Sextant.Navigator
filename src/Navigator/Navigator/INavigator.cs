@@ -10,6 +10,12 @@ namespace Navigator
     public interface INavigator
     {
         /// <summary>
+        /// Gets the default name of the route.
+        /// </summary>
+        /// <value>The default name of the route.</value>
+        string DefaultRouteName { get; }
+
+        /// <summary>
         /// Gets or sets the on generate route.
         /// </summary>
         RouteFactory OnGenerateRoute { get; set; }
@@ -38,14 +44,15 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         IObservable<T> Pop<T>()
-            where T : class;
+            where T : Route;
 
         /// <summary>
         /// Pop the current route off the navigator and push a named route in its place.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        IObservable<T> PopAndPushNamed<T>(string routeName, object argument);
+        IObservable<T> PopAndPushNamed<T>(string routeName, object argument)
+            where T : Route;
 
         /// <summary>
         /// Calls pop repeatedly until the predicate returns true.
@@ -53,7 +60,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="predicate">The predicate.</param>
         /// <returns></returns>
-        IObservable<T> PopUntil<T>(Expression<Func<Route, bool>> predicate);
+        IObservable<T> PopUntil<T>(Expression<Func<T, bool>> predicate)
+            where T : Route;
 
         /// <summary>
         /// Push the given route onto the navigator.
@@ -61,7 +69,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> Push<T>(Route<T> route);
+        IObservable<T> Push<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Push the given route onto the navigator, and then remove all the previous routes until the predicate returns true.
@@ -70,7 +79,8 @@ namespace Navigator
         /// <param name="route">The route.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns></returns>
-        IObservable<T> PushAndRemoveUntil<T>(Route<T> route, Expression<Func<bool>> predicate);
+        IObservable<T> PushAndRemoveUntil<T>(T route, Expression<Func<T, bool>> predicate)
+            where T : Route;
 
         /// <summary>
         /// Push a named route onto the navigator.
@@ -78,7 +88,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> PushNamed<T>(Route<T> route);
+        IObservable<T> PushNamed<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Push the route with the given name onto the navigator, and then remove all the previous routes until the predicate returns true.
@@ -86,7 +97,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> PushNamedAndRemoveUntil<T>(Route<T> route);
+        IObservable<T> PushNamedAndRemoveUntil<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Replace the current route of the navigator by pushing the given route and then disposing the previous route once the new route has finished animating in.
@@ -94,7 +106,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> PushReplacement<T>(Route<T> route);
+        IObservable<T> PushReplacement<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Replace the current route of the navigator by pushing the route named routeName and then disposing the previous route once the new route has finished animating in.
@@ -102,7 +115,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> PushReplacementNamed<T>(Route<T> route);
+        IObservable<T> PushReplacementNamed<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Immediately remove route from the navigator, and Route.dispose it.
@@ -110,7 +124,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> RemoveRoute<T>(Route<T> route);
+        IObservable<T> RemoveRoute<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Immediately remove a route from the navigator, and Route.dispose it. The route to be replaced is the one below the given anchorRoute.
@@ -118,7 +133,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> RemoveRouteBelow<T>(Route<T> route);
+        IObservable<T> RemoveRouteBelow<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Replaces a route on the navigator with a new route.
@@ -126,7 +142,8 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> Replace<T>(Route<T> route);
+        IObservable<T> Replace<T>(T route)
+            where T : Route;
 
         /// <summary>
         /// Replaces a route on the navigator with a new route. The route to be replaced is the one below the given anchorRoute.
@@ -134,6 +151,7 @@ namespace Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        IObservable<T> ReplaceRouteBelow<T>(Route<T> route);
+        IObservable<T> ReplaceRouteBelow<T>(T route)
+            where T : Route;
     }
 }

@@ -13,9 +13,6 @@
         /// <summary>
         /// Gets a value indicating whether this route is the very first route being pushed onto this Navigator.
         /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is initial route; otherwise, <c>false</c>.
-        /// </value>
         public bool IsInitialRoute { get; }
 
         /// <summary>

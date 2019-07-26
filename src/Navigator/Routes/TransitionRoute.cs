@@ -1,4 +1,7 @@
-﻿namespace Navigator
+﻿using System;
+using System.Reactive;
+
+namespace Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/TransitionRoute-class.html
@@ -9,13 +12,31 @@
             : base(routeSettings)
         {
         }
+
+        public virtual Animation<double> Animation { get; }
+
+        public IObservable<Unit> Completed { get; }
+
+        public double TransitionDuration { get; }
+
+        public bool FinishedWhenPopped { get; }
+
+        public bool Opaque { get; }
+
+        public bool CanTransitionFrom(TransitionRoute previousRoute) => true;
+
+        public bool CanTransitionTo(TransitionRoute nextRoute) => true;
+
+        public Animation<double> CreateAnimation() => default(Animation<double>);
     }
 
-    public class TransitionRoute<T> : Route<T>
+    public class TransitionRoute<T> : TransitionRoute
     {
         public TransitionRoute(RouteSettings routeSettings)
             : base(routeSettings)
         {
         }
+
+        public new IObservable<T> Completed { get; }
     }
 }
