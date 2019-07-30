@@ -51,18 +51,18 @@ namespace Navigator
         /// <summary>
         /// Changeds the state of the external.
         /// </summary>
-        void ChangedExternalState() { }
+        protected void ChangedExternalState() { }
 
         /// <summary>
         /// Changeds the state of the internal.
         /// </summary>
-        void ChangedInternalState() { }
+        protected void ChangedInternalState() { }
 
         /// <summary>
         /// Dids the change next.
         /// </summary>
         /// <param name="route">The route.</param>
-        void DidChangeNext(Route route) { }
+        protected void DidChangeNext(Route route) { }
     }
 
     public class Route<T> : Route
