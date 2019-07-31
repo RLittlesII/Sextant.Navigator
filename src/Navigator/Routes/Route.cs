@@ -14,9 +14,7 @@ namespace Sextant.Navigator
         /// Initializes a new instance of the <see cref="Route"/> class.
         /// </summary>
         /// <param name="routeSettings">The route settings.</param>
-        public Route(RouteSettings routeSettings)
-        {
-        }
+        public Route(RouteSettings routeSettings) { Settings = routeSettings; }
 
         /// <summary>
         /// Determines whether this route is on the navigator.
@@ -49,7 +47,7 @@ namespace Sextant.Navigator
         /// <summary>
         /// Gets or sets the settings for this route.
         /// </summary>
-        public RouteSettings Settings { get; set; }
+        public RouteSettings Settings { get; }
 
         public void Dispose()
         {
@@ -122,7 +120,7 @@ namespace Sextant.Navigator
         /// This method is called by Navigator.maybePop.
         /// </summary>
         /// <returns>An observable of route disposition.</returns>
-        public IObservable<RoutePopDisposition> WillPop() { return Observable.Return(default(RoutePopDisposition)); }
+        public IObservable<RoutePopDisposition> WillPop() => Observable.Return(default(RoutePopDisposition));
 
         protected virtual void Dispose(bool disposing)
         {
@@ -131,8 +129,8 @@ namespace Sextant.Navigator
             }
         }
 
-        public static Expression<Func<T, bool>> WithName<T>(string routeName) where T : Route =>
-            route => route.Settings.Name == routeName;
+        public static Expression<Func<T, bool>> WithName<T>(string routeName)
+            where T : Route => route => route.Settings.Name == routeName;
 
     }
 
@@ -142,7 +140,7 @@ namespace Sextant.Navigator
         /// Initializes a new instance of the <see cref="Route{T}"/> class.
         /// </summary>
         /// <param name="routeSettings">The route settings.</param>
-        public Route(RouteSettings routeSettings)
+        public Route(RouteSettings<T> routeSettings)
             : base(routeSettings)
         {
         }

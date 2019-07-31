@@ -10,12 +10,14 @@ namespace Navigator.Tests
     {
         private readonly INavigator _navigator;
 
+        private static Route<T> Route<T>() => new Route<T>(new RouteSettings<T>());
+
         public NavigatorMock()
         {
             _navigator = Substitute.For<INavigator>();
-            _navigator.Pop<Route<TestViewModel>>().Returns(x => Observable.Return(new Route<TestViewModel>(new RouteSettings())));
-            _navigator.PopAndPushNamed<Route<TestViewModel>>(Arg.Any<string>(), Arg.Any<object>()).Returns(x => Observable.Return(new Route<TestViewModel>( new RouteSettings())));
-            _navigator.PopUntil(Arg.Any<Expression<Func<Route<TestViewModel>, bool>>>()).Returns(x => Observable.Return(new Route<TestViewModel>(new RouteSettings())));
+            _navigator.Pop<Route<TestViewModel>>().Returns(x => Observable.Return(Route<TestViewModel>()));
+            _navigator.PopAndPushNamed<Route<TestViewModel>>(Arg.Any<string>(), Arg.Any<object>()).Returns(x => Observable.Return(Route<TestViewModel>()));
+            _navigator.PopUntil(Arg.Any<Expression<Func<Route<TestViewModel>, bool>>>()).Returns(x => Observable.Return(Route<TestViewModel>()));
             _navigator.Push(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings())));
             _navigator.PushNamed(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings())));
             _navigator.PushAndRemoveUntil(Arg.Any<PageRoute<TestViewModel>>(), Arg.Any<Expression<Func<PageRoute<TestViewModel>, bool>>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings())));
