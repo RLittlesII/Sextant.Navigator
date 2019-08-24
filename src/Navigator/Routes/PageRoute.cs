@@ -13,13 +13,13 @@
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <seealso cref="Navigator.Route{T}" />
-    public class PageRoute<T> : ModalRoute<T>
+    public class PageRoute<T> : PageRoute
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PageRoute{T}"/> class.
         /// </summary>
         /// <param name="routeSettings">The route settings.</param>
-        public PageRoute(RouteSettings routeSettings)
+        public PageRoute(RouteSettings<T> routeSettings)
             : base(routeSettings)
         {
         }

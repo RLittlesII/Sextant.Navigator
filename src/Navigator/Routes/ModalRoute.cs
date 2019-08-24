@@ -23,7 +23,7 @@ namespace Sextant.Navigator
         /// Initializes a new instance of the <see cref="ModalRoute{T}"/> class.
         /// </summary>
         /// <param name="routeSettings">The route settings.</param>
-        public ModalRoute(RouteSettings routeSettings)
+        public ModalRoute(RouteSettings<T> routeSettings)
             : base(routeSettings)
         {
         }

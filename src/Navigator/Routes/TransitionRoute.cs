@@ -32,7 +32,7 @@ namespace Sextant.Navigator
 
     public class TransitionRoute<T> : TransitionRoute
     {
-        public TransitionRoute(RouteSettings routeSettings)
+        public TransitionRoute(RouteSettings<T> routeSettings)
             : base(routeSettings)
         {
         }
