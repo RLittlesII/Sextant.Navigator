@@ -11,7 +11,7 @@ namespace Navigator.Tests
         public class SettingsProperty
         {
             [Fact]
-            public void Should()
+            public void Should_Return_Name()
             {
                 var route = new Route(new RouteSettings {Name = "hello"});
 
