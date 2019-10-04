@@ -31,7 +31,7 @@ variables:
   - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
     value: "true"
   - name: CodeCovToken
-    value: 'ed1436a4-a776-4296-87e9-fe419e291c15'
+    value: 'abd8cf66-21fa-45eb-b45e-35a3022a7402'
 
 jobs:
   - job: GitVersion
