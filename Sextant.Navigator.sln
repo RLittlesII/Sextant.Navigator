@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator", "Navigator\Navigator.csproj", "{FCAA7A98-B93A-4407-AF62-A8E983863392}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator", "src\Navigator\Navigator.csproj", "{FCAA7A98-B93A-4407-AF62-A8E983863392}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{6FF13398-764F-4ABE-BCBC-B69860402E15}"
 ProjectSection(SolutionItems) = preProject
@@ -20,9 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".build", "..\.build\.build.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{9EFD09A8-551C-4010-BAFB-C8B72D564B2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frame", "Frame\Frame.csproj", "{E623EE14-A324-4CDB-AB5A-3645F06CF34A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Frame", "src\Frame\Frame.csproj", "{E623EE14-A324-4CDB-AB5A-3645F06CF34A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator.Tests", "..\test\Navigator.Tests\Navigator.Tests.csproj", "{3F0B49CD-AED2-437A-BD7E-FBA7394D3D1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator.Tests", "test\Navigator.Tests\Navigator.Tests.csproj", "{3F0B49CD-AED2-437A-BD7E-FBA7394D3D1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
