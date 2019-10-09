@@ -1,7 +1,14 @@
 <Project>
     <PropertyGroup>
-        <Copyright>Copyright Rodney Littles, II © 2019</Copyright>
         <Authors>RLittlesII</Authors>
-        <LangVersion>latest</LangVersion>
+        <Owners>RLittlesII</Owners>
+        <Copyright>Copyright Rodney Littles, II © 2019</Copyright>
+        <Description>An observable based routing library based on flutters routing built for ReactiveUI</Description>
+        <RepositoryUrl>https://github.com/RLittlesII/Sextant.Navigator.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageProjectUrl>https://github.com/RLittlesII/Sextant.Navigator</PackageProjectUrl>
+        <PackageIconUrl>https://github.com/reactiveui/styleguide/blob/master/logo_sextant/logo.png?raw=true</PackageIconUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageTags>mvvm;reactiveui;Observable;xamarin;xamarin ios;xamarin mac;</PackageTags>
     </PropertyGroup>
 </Project>
