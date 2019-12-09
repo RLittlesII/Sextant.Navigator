@@ -27,7 +27,7 @@ namespace Sextant.Navigator
 
         public bool CanTransitionTo(TransitionRoute nextRoute) => true;
 
-        public Animation<double> CreateAnimation() => default(Animation<double>);
+        public virtual Animation<double> CreateAnimation() => default(Animation<double>);
     }
 
     public class TransitionRoute<T> : TransitionRoute

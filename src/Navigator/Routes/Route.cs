@@ -80,7 +80,7 @@ namespace Sextant.Navigator
         /// previousRoute will be null if there's no previous route.
         /// </summary>
         /// <param name="route">The route.</param>
-        protected  void DidChangePrevious(Route route) { }
+        protected virtual void DidChangePrevious(Route route) { }
 
         /// <summary>
         /// The route was popped or is otherwise being removed somewhat gracefully.
@@ -120,7 +120,7 @@ namespace Sextant.Navigator
         /// This method is called by Navigator.maybePop.
         /// </summary>
         /// <returns>An observable of route disposition.</returns>
-        public IObservable<RoutePopDisposition> WillPop() => Observable.Return(default(RoutePopDisposition));
+        public virtual IObservable<RoutePopDisposition> WillPop() => Observable.Return(default(RoutePopDisposition));
 
         protected virtual void Dispose(bool disposing)
         {
