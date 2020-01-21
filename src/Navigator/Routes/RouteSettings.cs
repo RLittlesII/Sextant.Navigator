@@ -1,4 +1,4 @@
-﻿namespace Navigator
+﻿namespace Sextant.Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/RouteSettings-class.html

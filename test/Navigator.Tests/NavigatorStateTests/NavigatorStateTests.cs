@@ -6,6 +6,7 @@ using FluentAssertions;
 using Xunit;
 using Navigator;
 using NSubstitute;
+using Sextant.Navigator;
 
 namespace Navigator.Tests
 {

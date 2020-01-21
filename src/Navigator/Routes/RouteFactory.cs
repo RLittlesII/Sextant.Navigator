@@ -1,5 +1,5 @@
 ﻿
-namespace Navigator
+namespace Sextant.Navigator
 {
 
     /// <summary>

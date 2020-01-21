@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>Sextant.Navigator</AssemblyName>
+        <RootNamespace>Sextant.Navigator</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

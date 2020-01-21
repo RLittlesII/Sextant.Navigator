@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Navigator
+﻿namespace Sextant.Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/PopupRoute-class.html

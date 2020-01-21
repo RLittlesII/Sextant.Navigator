@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 using System.Reactive;
 using System.Reactive.Linq;
 
-namespace Navigator
+namespace Sextant.Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/NavigatorState-class.html

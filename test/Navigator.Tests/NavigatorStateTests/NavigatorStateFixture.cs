@@ -1,4 +1,5 @@
 using ReactiveUI.Testing;
+using Sextant.Navigator;
 
 namespace Navigator.Tests
 {

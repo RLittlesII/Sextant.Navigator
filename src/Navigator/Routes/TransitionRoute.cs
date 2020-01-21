@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reactive;
 
-namespace Navigator
+namespace Sextant.Navigator
 {
     /// <summary>
     /// https://api.flutter.dev/flutter/widgets/TransitionRoute-class.html

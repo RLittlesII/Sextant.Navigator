@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using System.Reactive.Linq;
 using NSubstitute;
+using Sextant.Navigator;
 
 namespace Navigator.Tests
 {
