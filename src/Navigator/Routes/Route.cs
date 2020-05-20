@@ -37,7 +37,7 @@ namespace Sextant.Navigator
         /// <summary>
         /// Gets the navigator that the route is in, if any.
         /// </summary>
-        public NavigatorState Navigator { get; }
+        public NavigatorState State { get; }
 
         /// <summary>
         /// Gets a future that completes when this route is popped off the navigator.

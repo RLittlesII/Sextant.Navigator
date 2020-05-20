@@ -40,7 +40,10 @@ namespace Sextant.Navigator
         /// Complete the lifecycle for a route that has been popped off the navigator.
         /// </summary>
         /// <param name="route">The route.</param>
-        public void FinalizeRoute(Route route) { }
+        public void FinalizeRoute(Route route)
+        {
+            route.State.FinalizeRoute(route);
+        }
 
         /// <summary>
         /// Called when this object is inserted into the tree
@@ -103,7 +106,8 @@ namespace Sextant.Navigator
         /// <typeparam name="T"></typeparam>
         /// <param name="route">The route.</param>
         /// <returns></returns>
-        public IObservable<T> PushNamedAndRemoveUntil<T>(Route<T> route) => Observable.Return(default(T));
+        public IObservable<T> PushNamedAndRemoveUntil<T>(Route<T> route) =>
+            Observable.Return(default(T)).Do(_ => route.DidPop(default(T)));
 
         /// <summary>
         /// Replace the current route of the navigator by pushing the given route and then disposing the previous route once the new route has finished animating in.

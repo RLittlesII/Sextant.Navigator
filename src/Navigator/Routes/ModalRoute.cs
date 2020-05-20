@@ -9,7 +9,7 @@ namespace Sextant.Navigator
         {
         }
 
-        public void AddScopedWillPopCallback(Action callback) { }
+        public void AddScopedWillPopCallback(Action callback) => callback?.Invoke();
     }
 
     /// <summary>
