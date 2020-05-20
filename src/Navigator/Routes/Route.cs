@@ -20,19 +20,19 @@ namespace Sextant.Navigator
         /// Determines whether this route is on the navigator.
         /// </summary>
         /// <returns></returns>
-        public IObservable<bool> IsActive { get; }
+        public bool IsActive { get; }
 
         /// <summary>
         /// Determines whether this route is the top-most route on the navigator.
         /// </summary>
         /// <returns></returns>
-        public IObservable<bool> IsCurrent { get; }
+        public bool IsCurrent { get; }
 
         /// <summary>
         /// Determines whether this route is the bottom-most route on the navigator.
         /// </summary>
         /// <returns></returns>
-        public IObservable<bool> IsFirst { get; }
+        public bool IsFirst { get; }
 
         /// <summary>
         /// Gets the navigator that the route is in, if any.
@@ -49,6 +49,8 @@ namespace Sextant.Navigator
         /// </summary>
         public RouteSettings Settings { get; }
 
+        public bool WillHandlePopInternally { get; }
+
         public void Dispose()
         {
             Dispose(true);
@@ -64,6 +66,11 @@ namespace Sextant.Navigator
         /// Changes the state of the internal.
         /// </summary>
         protected void ChangedInternalState() { }
+
+        /// <summary>
+        /// Called after install when the route is added to the navigator.
+        /// </summary>
+        protected virtual void DidAdd() { }
 
         /// <summary>
         /// This route's next route has changed to the given new route.
@@ -85,8 +92,8 @@ namespace Sextant.Navigator
         /// <summary>
         /// The route was popped or is otherwise being removed somewhat gracefully.
         /// </summary>
-        /// <param name="route">The route.</param>
-        protected virtual void DidComplete(Route route) { }
+        /// <param name="result">The result.</param>
+        protected virtual void DidComplete<T>(T result) { }
 
         /// <summary>
         /// A request was made to pop this route.
@@ -95,7 +102,7 @@ namespace Sextant.Navigator
         /// </summary>
         /// <typeparam name="T">The result type.</typeparam>
         /// <param name="result">The result.</param>
-        protected virtual void DidPop<T>(T result) { }
+        public virtual void DidPop<T>(T result) { }
 
         /// <summary>
         /// The given route, which was above this one, has been popped off the navigator.
@@ -116,6 +123,11 @@ namespace Sextant.Navigator
         protected virtual void DidReplace(Route route) { }
 
         /// <summary>
+        /// Called when the route is inserted into the navigator.
+        /// </summary>
+        protected virtual void Install() { }
+
+        /// <summary>
         /// Returns false if this route wants to veto a Navigator.pop.
         /// This method is called by Navigator.maybePop.
         /// </summary>
@@ -131,7 +143,6 @@ namespace Sextant.Navigator
 
         public static Expression<Func<T, bool>> WithName<T>(string routeName)
             where T : Route => route => route.Settings.Name == routeName;
-
     }
 
     public class Route<T> : Route
@@ -144,5 +155,15 @@ namespace Sextant.Navigator
             : base(routeSettings)
         {
         }
+
+        /// <summary>
+        /// Gets the route that is popped (see Navigator.pop) if the result isn't specified or if it's null, this value will be used instead.
+        /// </summary>
+        public T CurrentResult { get; }
+
+        /// <summary>
+        /// Gets a future that completes when this route is popped off the navigator.
+        /// </summary>
+        public new IObservable<T> Popped { get; }
     }
 }

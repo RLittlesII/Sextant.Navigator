@@ -4,16 +4,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator", "src\Navigator\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{6FF13398-764F-4ABE-BCBC-B69860402E15}"
 ProjectSection(SolutionItems) = preProject
-	..\LICENSE = ..\LICENSE
-	..\README.md = ..\README.md
-	..\analyzers.ruleset = ..\analyzers.ruleset
-	..\azure-pipelines.yml = ..\azure-pipelines.yml
-	..\build.ps1 = ..\build.ps1
-	..\build.sh = ..\build.sh
-	..\common.build.props = ..\common.build.props
-	..\GitVersion.yml = ..\GitVersion.yml
-	..\global.json = ..\global.json
-	..\NuGet.config = ..\NuGet.config
+	analyzers.ruleset = analyzers.ruleset
+	common.build.props = common.build.props
+	common.build.targets = common.build.targets
+	GitVersion.yml = GitVersion.yml
+	global.json = global.json
+	LICENSE = LICENSE
+	NuGet.config = NuGet.config
+	packages.props = packages.props
+	README.md = README.md
 EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{9EFD09A8-551C-4010-BAFB-C8B72D564B2E}"

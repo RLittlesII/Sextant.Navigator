@@ -10,7 +10,7 @@ namespace Navigator.Tests
     {
         private readonly INavigator _navigator;
 
-        private static Route<T> Route<T>() => new Route<T>(new RouteSettings<T>());
+        private static Route<T> Route<T>() => new Route<T>(new RouteSettings<T>(string.Empty));
 
         public NavigatorMock()
         {
@@ -18,15 +18,15 @@ namespace Navigator.Tests
             _navigator.Pop<Route<TestViewModel>>().Returns(x => Observable.Return(Route<TestViewModel>()));
             _navigator.PopAndPushNamed<Route<TestViewModel>>(Arg.Any<string>(), Arg.Any<object>()).Returns(x => Observable.Return(Route<TestViewModel>()));
             _navigator.PopUntil(Arg.Any<Expression<Func<Route<TestViewModel>, bool>>>()).Returns(x => Observable.Return(Route<TestViewModel>()));
-            _navigator.Push(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.PushNamed(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.PushAndRemoveUntil(Arg.Any<PageRoute<TestViewModel>>(), Arg.Any<Expression<Func<PageRoute<TestViewModel>, bool>>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.PushReplacement(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.PushReplacementNamed(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.RemoveRoute(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.RemoveRouteBelow(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.Replace(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
-            _navigator.ReplaceRouteBelow(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>())));
+            _navigator.Push(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.PushNamed(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.PushAndRemoveUntil(Arg.Any<PageRoute<TestViewModel>>(), Arg.Any<Expression<Func<PageRoute<TestViewModel>, bool>>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.PushReplacement(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.PushReplacementNamed(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.RemoveRoute(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.RemoveRouteBelow(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.Replace(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
+            _navigator.ReplaceRouteBelow(Arg.Any<PageRoute<TestViewModel>>()).Returns(x => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings<TestViewModel>(string.Empty))));
         }
 
         public string DefaultRouteName => nameof(NavigatorMock);
