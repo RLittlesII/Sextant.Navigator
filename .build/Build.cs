@@ -1,26 +1,45 @@
-using System;
-using System.Linq;
 using Nuke.Common;
 using Nuke.Common.Execution;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tooling;
-using Nuke.Common.Utilities.Collections;
 using Rocket.Surgery.Nuke.DotNetCore;
-using static Nuke.Common.EnvironmentInfo;
-using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
+using Rocket.Surgery.Nuke;
+using JetBrains.Annotations;
 
+[PublicAPI]
 [CheckBuildProjectConfigurations]
 [UnsetVisualStudioEnvironmentVariables]
-class Build : DotNetCoreBuild
+[AzurePipelinesSteps(
+    InvokedTargets = new[] { nameof(Default) },
+    NonEntryTargets = new[] { nameof(BuildVersion), nameof(Generate_Code_Coverage_Reports), nameof(Default) },
+    ExcludedTargets = new[] { nameof(Restore), nameof(DotnetToolRestore) },
+    Parameters = new[] { nameof(CoverageDirectory), nameof(ArtifactsDirectory), nameof(Verbosity), nameof(Configuration) }
+)]
+[PackageIcon("https://raw.githubusercontent.com/RocketSurgeonsGuild/graphics/master/png/social-square-thrust-rounded.png")]
+[EnsurePackageSourceHasCredentials("RocketSurgeonsGuild")]
+[EnsureGitHooks(GitHook.PreCommit)]
+class Solution : DotNetCoreBuild, IDotNetCoreBuild
 {
+    /// <summary>
     /// Support plugins are available for:
     ///   - JetBrains ReSharper        https://nuke.build/resharper
     ///   - JetBrains Rider            https://nuke.build/rider
     ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
     ///   - Microsoft VSCode           https://nuke.build/vscode
+    /// </summary>
 
-    public static int Main() => Execute<Build>(x => x.Default);
+    public static int Main() => Execute<Solution>(x => x.Default);
 
-    Target Default => _ => _.DependsOn(DotNetCore);
+    Target Default => _ => _
+        .DependsOn(Restore)
+        .DependsOn(Build)
+        .DependsOn(Test)
+        .DependsOn(Pack)
+    ;
+
+    public new Target Restore => _ => _.With(this, DotNetCoreBuild.Restore);
+
+    public new Target Build => _ => _.With(this, DotNetCoreBuild.Build);
+
+    public new Target Test => _ => _.With(this, DotNetCoreBuild.Test);
+
+    public new Target Pack => _ => _.With(this, DotNetCoreBuild.Pack);
 }
