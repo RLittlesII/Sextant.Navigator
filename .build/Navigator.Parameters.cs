@@ -1,7 +1,3 @@
-using Nuke.Common;
-using Nuke.Common.Git;
-using Nuke.Common.Tools.GitVersion;
-
 /// <summary>
 /// Represents the build parameters and properties.
 /// </summary>

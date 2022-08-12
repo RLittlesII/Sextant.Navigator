@@ -1,8 +1,3 @@
-using JetBrains.Annotations;
-using Nuke.Common;
-using Nuke.Common.Execution;
-using Rocket.Surgery.Nuke.DotNetCore;
-
 [PublicAPI]
 [UnsetVisualStudioEnvironmentVariables]
 internal partial class Navigator : NukeBuild,
