@@ -1,5 +1,8 @@
 [PublicAPI]
 [UnsetVisualStudioEnvironmentVariables]
+[DotNetVerbosityMapping]
+[MSBuildVerbosityMapping]
+[NuGetVerbosityMapping]
 internal partial class Navigator : NukeBuild,
     ICanRestoreWithDotNetCore,
     ICanBuildWithDotNetCore,
