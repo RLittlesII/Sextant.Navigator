@@ -14,6 +14,10 @@
     },
     ExcludedTargets = new[] { nameof(ICanClean.Clean), nameof(ICanRestoreWithDotNetCore.DotnetToolRestore) }
 )]
+[PrintBuildVersion]
+[PrintCIEnvironment]
+[UploadLogs]
+[TitleEvents]
 internal partial class Navigator
 {
     public Target GitHubActions => _ => _.DependsOn(Default).Executes(() => { });

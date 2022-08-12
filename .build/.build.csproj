@@ -19,7 +19,7 @@
         <PackageReference Include="GitVersion.Tool" ExcludeAssets="All" />
         <PackageReference Include="NuGet.CommandLine" />
         <PackageReference Include="Nuke.Common" />
-        <PackageReference Include="ReportGenerator" />
+        <PackageReference Include="ReportGenerator" ExcludeAssets="All" />
         <PackageReference Include="Rocket.Surgery.Nuke" />
     </ItemGroup>
 
