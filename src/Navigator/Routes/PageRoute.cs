@@ -3,7 +3,7 @@
 namespace Navigator.Routes;
 
 /// <summary>
-/// https://api.flutter.dev/flutter/widgets/PageRoute-class.html
+/// https://api.flutter.dev/flutter/widgets/PageRoute-class.html.
 /// </summary>
 public class PageRoute : ModalRoute
 {

@@ -3,7 +3,7 @@
 namespace Navigator.Routes;
 
 /// <summary>
-/// https://api.flutter.dev/flutter/widgets/TransitionRoute-class.html
+/// https://api.flutter.dev/flutter/widgets/TransitionRoute-class.html.
 /// </summary>
 public class TransitionRoute : Route
 {
