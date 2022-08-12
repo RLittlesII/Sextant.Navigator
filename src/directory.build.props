@@ -1,14 +1,14 @@
 <Project>
-    <Import Project="$([MSBuild]::GetPathOfFileAbove('common.build.props', '$(MSBuildThisFileDirectory)../'))" />
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('directory.build.props', '$(MSBuildThisFileDirectory)../'))" />
     <PropertyGroup>
         <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)..\analyzers.ruleset</CodeAnalysisRuleSet>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.2" PrivateAssets="all" />
-        <PackageReference Include="Roslynator.Analyzers" Version="2.0.0" PrivateAssets="All" />
+        <PackageReference Include="stylecop.analyzers" />
+        <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" />
+        <PackageReference Include="Roslynator.Analyzers" />
     </ItemGroup>
-        <ItemGroup>
-        <PackageReference Include="Rocket.Surgery.Build.Metadata" Version="3.2.0" PrivateAssets="All" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <ItemGroup>
+        <AdditionalFiles Include="$(MSBuildThisFileDirectory)..\stylecop.json" Link="stylecop.json" />
     </ItemGroup>
 </Project>

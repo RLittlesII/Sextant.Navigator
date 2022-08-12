@@ -2,13 +2,20 @@
     <PropertyGroup>
         <Authors>RLittlesII</Authors>
         <Owners>RLittlesII</Owners>
-        <Copyright>Copyright Rodney Littles, II © 2019</Copyright>
+        <Copyright>Copyright Rodney Littles, II © $([System.DateTime]::Now.ToString('yyyy'))</Copyright>
         <Description>An observable based routing library based on flutters routing built for ReactiveUI</Description>
         <RepositoryUrl>https://github.com/RLittlesII/Sextant.Navigator.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageProjectUrl>https://github.com/RLittlesII/Sextant.Navigator</PackageProjectUrl>
         <PackageIconUrl>https://github.com/reactiveui/styleguide/blob/master/logo_sextant/logo.png?raw=true</PackageIconUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <PackageTags>mvvm;reactiveui;Observable;xamarin;xamarin ios;xamarin mac;</PackageTags>
+        <PackageTags>mvvm;observable;xamarin;xamarin ios;xamarin mac;maui</PackageTags>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <NukeTelemetryVersion>1</NukeTelemetryVersion>
     </PropertyGroup>
 </Project>

@@ -1,6 +1,5 @@
-namespace Navigator.Tests
+namespace Navigator.Tests;
+
+public class TestViewModel
 {
-    public class TestViewModel
-    {
-    }
 }

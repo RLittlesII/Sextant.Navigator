@@ -1,6 +1,5 @@
-﻿namespace Sextant.Navigator
+﻿namespace Navigator.Routes;
+
+public class Animation<T>
 {
-    public class Animation<T>
-    {
-    }
 }

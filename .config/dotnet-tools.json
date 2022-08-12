@@ -14,12 +14,6 @@
         "dotnet-outdated"
       ]
     },
-    "cake.tool": {
-      "version": "0.34.1",
-      "commands": [
-        "dotnet-cake"
-      ]
-    },
     "gitversion.tool": {
       "version": "5.0.0-beta5.40",
       "commands": [
@@ -33,7 +27,7 @@
       ]
     },
     "nuke.globaltool": {
-      "version": "0.21.1",
+      "version": "6.1.2",
       "commands": [
         "nuke"
       ]

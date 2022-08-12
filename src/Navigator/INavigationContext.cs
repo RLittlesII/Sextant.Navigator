@@ -1,6 +1,8 @@
-﻿namespace Sextant.Navigator
+﻿namespace Navigator;
+
+/// <summary>
+/// Represents the navigation context.
+/// </summary>
+public interface INavigationContext
 {
-    public interface INavigationContext
-    {
-    }
 }

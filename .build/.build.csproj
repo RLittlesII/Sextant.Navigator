@@ -1,39 +1,47 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <RootNamespace></RootNamespace>
-    <IsPackable>False</IsPackable>
-    <NoWarn>CS0649;CS0169</NoWarn>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="GitVersion.Tool" Version="5.3.3" ExcludeAssets="All" />
-    <PackageReference Include="NuGet.CommandLine" Version="5.1.0" />
-    <PackageReference Include="JetBrains.ReSharper.CommandLineTools" Version="2020.1.3" />
-    <PackageReference Include="Nuke.Common" Version="0.24.10" />
-    <PackageReference Include="ReportGenerator" Version="4.5.8" />
-    <PackageReference Include="Rocket.Surgery.Nuke.DotNetCore" Version="0.13.5" />
-  </ItemGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <NoWarn>CS0649;CS0169</NoWarn>
+        <NukeRootDirectory>..</NukeRootDirectory>
+        <NukeScriptDirectory>..</NukeScriptDirectory>
+        <NukeTelemetryVersion>1</NukeTelemetryVersion>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <RootNamespace />
+        <IsPackable>False</IsPackable>
+        <NoWarn>CS0649;CS0169</NoWarn>
+        <NukeTelemetryVersion>1</NukeTelemetryVersion>
+        <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <NukeSpecificationFiles Include="**\*.json" Exclude="bin\**;obj\**" />
-    <NukeExternalFiles Include="**\*.*.ext" Exclude="bin\**;obj\**" />
-    <None Remove="*.csproj.DotSettings;*.ref.*.txt" />
+    <ItemGroup>
+        <PackageReference Include="GitVersion.Tool" ExcludeAssets="All" />
+        <PackageReference Include="NuGet.CommandLine" />
+        <PackageReference Include="Nuke.Common" />
+        <PackageReference Include="ReportGenerator" />
+        <PackageReference Include="Rocket.Surgery.Nuke" />
+    </ItemGroup>
 
-    <!-- Common build related files -->
-    <None Include="..\src\build.ps1" />
-    <None Include="..\src\build.sh" />
-    <None Include="..\.nuke" />
-    <None Include="..\global.json" Condition="Exists('..\global.json')" />
-    <None Include="..\nuget.config" Condition="Exists('..\nuget.config')" />
-    <None Include="..\azure-pipelines.yml" Condition="Exists('..\azure-pipelines.yml')" />
-    <None Include="..\Jenkinsfile" Condition="Exists('..\Jenkinsfile')" />
-    <None Include="..\appveyor.yml" Condition="Exists('..\appveyor.yml')" />
-    <None Include="..\.travis.yml" Condition="Exists('..\.travis.yml')" />
-    <None Include="..\GitVersion.yml" Condition="Exists('..\GitVersion.yml')" />
-  </ItemGroup>
+    <ItemGroup>
+        <NukeMetadata Include="**\*.json" Exclude="bin\**;obj\**" />
+        <NukeExternalFiles Include="**\*.*.ext" Exclude="bin\**;obj\**" />
+        <None Remove="*.csproj.DotSettings;*.ref.*.txt" />
+        <!-- Common build related files -->
+        <None Include="..\build.ps1" />
+        <None Include="..\build.sh" />
+        <None Include="..\global.json" Condition="Exists('..\global.json')" />
+        <None Include="..\azure-pipelines.yml" Condition="Exists('..\azure-pipelines.yml')" />
+        <None Include="..\GitVersion.yml" Condition="Exists('..\GitVersion.yml')" />
+    </ItemGroup>
 
+    <ItemGroup>
+        <Content Include="..\.nuke\**\*.*" Link=".nuke\%(RecursiveDir)%(Filename)%(Extension)" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\.config\dotnet-tools.json">
+            <Link>dotnet-tools.json</Link>
+        </Content>
+    </ItemGroup>
 </Project>
