@@ -1,6 +1,6 @@
 [GitHubActionsSteps(
     "ci",
-    GitHubActionsImage.UbuntuLatest,
+    GitHubActionsImage.WindowsLatest,
     AutoGenerate = true,
     On = new[] { GitHubActionsTrigger.Push },
     OnPushTags = new[] { "v*" },
