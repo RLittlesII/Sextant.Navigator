@@ -1,5 +1,3 @@
-using FluentAssertions;
-
 namespace Navigator.Tests;
 
 public sealed class NavigatorStateTests
