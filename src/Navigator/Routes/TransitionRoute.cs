@@ -1,11 +1,10 @@
-﻿using System.Reactive;
-
-namespace Navigator.Routes;
+﻿namespace Navigator.Routes;
 
 /// <summary>
 /// https://api.flutter.dev/flutter/widgets/TransitionRoute-class.html.
 /// </summary>
-public class TransitionRoute : Route
+/// <typeparam name="T">The route type.</typeparam>
+public class TransitionRoute<T> : Route<T>
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="TransitionRoute"/> class.

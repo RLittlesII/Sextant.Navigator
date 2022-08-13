@@ -5,11 +5,12 @@ namespace Navigator.Routes;
 /// <summary>
 /// https://api.flutter.dev/flutter/widgets/ModalRoute-class.html.
 /// </summary>
+/// <typeparam name="T">The argument type.</typeparam>
 /// <seealso cref="TransitionRoute{T}" />
-public class ModalRoute : TransitionRoute
+public class ModalRoute<T> : TransitionRoute<T>
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="ModalRoute"/> class.
+    /// Initializes a new instance of the <see cref="ModalRoute{T}"/> class.
     /// </summary>
     /// <param name="routeSettings">The route settings.</param>
     protected ModalRoute(RouteSettings routeSettings)
@@ -22,21 +23,4 @@ public class ModalRoute : TransitionRoute
     /// </summary>
     /// <param name="callback">The call back.</param>
     public void AddScopedWillPopCallback([NotNull] Action callback) => callback.Invoke();
-}
-
-/// <summary>
-/// https://api.flutter.dev/flutter/widgets/ModalRoute-class.html.
-/// </summary>
-/// <typeparam name="T">The argument type.</typeparam>
-/// <seealso cref="TransitionRoute{T}" />
-public class ModalRoute<T> : ModalRoute
-{
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ModalRoute{T}"/> class.
-    /// </summary>
-    /// <param name="routeSettings">The route settings.</param>
-    protected ModalRoute(RouteSettings routeSettings)
-        : base(routeSettings)
-    {
-    }
 }

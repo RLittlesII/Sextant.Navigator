@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using System.Reactive;
 using Navigator.Routes;
 
 namespace Navigator;
@@ -6,6 +7,7 @@ namespace Navigator;
 /// <summary>
 /// https://api.flutter.dev/flutter/widgets/Navigator-class.html.
 /// </summary>
+// QUESTION: [rlittlesii: August 13, 2022] Implement me on each platform?!
 public interface INavigator
 {
     /// <summary>
@@ -17,7 +19,17 @@ public interface INavigator
     /// <summary>
     /// Gets or sets the on generate route.
     /// </summary>
-    RouteFactory OnGenerateRoute { get; set; }
+    RouteFactory? OnGenerateRoute { get; set; }
+
+    /// <summary>
+    /// Gets or sets the pop page call back.
+    /// </summary>
+    PopPageCallback? OnPopPage { get; set; }
+
+    /// <summary>
+    /// Gets the list of pages.  Future: this should be the platforms page.
+    /// </summary>
+    List<string> Pages { get; }
 
     /// <summary>
     /// Determines whether this instance can pop the specified context.

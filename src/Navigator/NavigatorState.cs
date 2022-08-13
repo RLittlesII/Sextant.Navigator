@@ -35,6 +35,20 @@ public class NavigatorState
     public bool CanPop() => true;
 
     /// <summary>
+    /// Called when this object is reinserted into the tree after having been removed via deactivate.
+    /// </summary>
+    public void Activate()
+    {
+    }
+
+    /// <summary>
+    /// Called when this object is removed from the tree.
+    /// </summary>
+    public void Deactivate()
+    {
+    }
+
+    /// <summary>
     /// Users the gesture.
     /// </summary>
     /// <returns>A signal.</returns>
@@ -51,6 +65,7 @@ public class NavigatorState
     /// </summary>
     public void InitializeState()
     {
+        // TODO: [rlittlesii: August 13, 2022] Initialize the view model?
     }
 
     /// <summary>
@@ -58,8 +73,8 @@ public class NavigatorState
     /// </summary>
     /// <typeparam name="T">The return type from the router.</typeparam>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> Pop<T>()
-        where T : Route => _navigator.Pop<T>();
+    public IObservable<NavigationResult> Pop<T>()
+        where T : Route => _navigator.Pop<T>().Select(_ => new NavigationResult());
 
     /// <summary>
     /// Pop the current route off the navigator and push a named route in its place.
@@ -68,8 +83,7 @@ public class NavigatorState
     /// <param name="argument">The argument.</param>
     /// <typeparam name="T">The route type.</typeparam>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PopAndPushNamed<T>(string routeName, object argument)
-        where T : Route => _navigator.PopAndPushNamed<T>(routeName, argument);
+    public IObservable<T> PopAndPushNamed<T>(string routeName, object argument) => _navigator.PopAndPushNamed<T>(routeName, argument);
 
     /// <summary>
     /// Calls pop repeatedly until the predicate returns true.
@@ -86,8 +100,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> Push<T>(T route)
-        where T : Route => _navigator.Push(route);
+    public IObservable<T> Push<T>(Route<T> route) => _navigator.Push<T>(route);
 
     /// <summary>
     /// Push the given route onto the navigator, and then remove all the previous routes until the predicate returns true.
@@ -96,8 +109,7 @@ public class NavigatorState
     /// <param name="route">The route.</param>
     /// <param name="predicate">The predicate.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PushAndRemoveUntil<T>(T route, Expression<Func<T, bool>> predicate)
-        where T : Route => _navigator.PushAndRemoveUntil(route, predicate);
+    public IObservable<T> PushAndRemoveUntil<T>(Route<T> route, Expression<Func<Route<T>, bool>> predicate) => _navigator.PushAndRemoveUntil(route, predicate);
 
     /// <summary>
     /// Push a named route onto the navigator.
@@ -105,8 +117,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PushNamed<T>(T route)
-        where T : Route => _navigator.PushNamed(route);
+    public IObservable<T> PushNamed<T>(Route<T> route) => _navigator.PushNamed(route);
 
     /// <summary>
     /// Push the route with the given name onto the navigator, and then remove all the previous routes until the predicate returns true.
@@ -122,8 +133,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PushReplacement<T>(T route)
-        where T : Route => _navigator.PushReplacement(route);
+    public IObservable<T> PushReplacement<T>(Route<T> route) => _navigator.PushReplacement(route);
 
     /// <summary>
     /// Replace the current route of the navigator by pushing the route named routeName and then disposing the previous route once the new route has finished animating in.
@@ -131,8 +141,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PushReplacementNamed<T>(T route)
-        where T : Route => _navigator.PushReplacementNamed(route);
+    public IObservable<T> PushReplacementNamed<T>(Route<T> route) => _navigator.PushReplacementNamed(route);
 
     /// <summary>
     /// Immediately remove route from the navigator, and Route.dispose it.
@@ -140,8 +149,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> RemoveRoute<T>(T route)
-        where T : Route => _navigator.RemoveRoute(route);
+    public IObservable<T> RemoveRoute<T>(Route<T> route) => _navigator.RemoveRoute(route);
 
     /// <summary>
     /// Immediately remove a route from the navigator, and Route.dispose it. The route to be replaced is the one below the given anchorRoute.
@@ -149,8 +157,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> RemoveRouteBelow<T>(T route)
-        where T : Route => _navigator.RemoveRouteBelow(route);
+    public IObservable<T> RemoveRouteBelow<T>(Route<T> route) => _navigator.RemoveRouteBelow(route);
 
     /// <summary>
     /// Replaces a route on the navigator with a new route.
@@ -158,8 +165,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> Replace<T>(T route)
-        where T : Route => _navigator.Replace(route);
+    public IObservable<T> Replace<T>(Route<T> route) => _navigator.Replace(route);
 
     /// <summary>
     /// Replaces a route on the navigator with a new route. The route to be replaced is the one below the given anchorRoute.
@@ -167,6 +173,5 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> ReplaceRouteBelow<T>(T route)
-        where T : Route => _navigator.ReplaceRouteBelow(route);
+    public IObservable<T> ReplaceRouteBelow<T>(Route<T> route) => _navigator.ReplaceRouteBelow(route);
 }

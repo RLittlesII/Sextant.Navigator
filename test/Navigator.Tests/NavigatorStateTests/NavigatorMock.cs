@@ -1,9 +1,17 @@
+using System.Reactive;
+
 namespace Navigator.Tests;
 
+/// <summary>
+/// Mock instance of an <see cref="INavigator"/>.
+/// </summary>
 internal sealed class NavigatorMock : INavigator
 {
     private readonly INavigator _navigator;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="NavigatorMock"/> class.
+    /// </summary>
     public NavigatorMock()
     {
         _navigator = Substitute.For<INavigator>();
@@ -21,17 +29,26 @@ internal sealed class NavigatorMock : INavigator
         _navigator.ReplaceRouteBelow(Arg.Any<PageRoute<TestViewModel>>()).Returns(_ => Observable.Return(new PageRoute<TestViewModel>(new RouteSettings())));
     }
 
+    /// <inheritdoc/>
     public string DefaultRouteName => nameof(NavigatorMock);
 
-    public RouteFactory OnGenerateRoute { get; set; }
+    /// <inheritdoc/>
+    public RouteFactory OnGenerateRoute { get; set; } = settings => new Route(settings);
 
     public bool CanPop(INavigationContext context) => throw new NotImplementedException();
 
+    /// <inheritdoc/>
+    public List<string> Pages { get; }
+
+    /// <inheritdoc/>
+    public bool CanPop(INavigationContext context) => throw new NotImplementedException();
+
+    /// <inheritdoc/>
     public IObservable<bool> MaybePop<TResult>(INavigationContext context)
         where TResult : class => _navigator.MaybePop<TResult>(context);
 
-    public IObservable<T> Pop<T>()
-        where T : Route => _navigator.Pop<T>();
+    /// <inheritdoc/>
+    public IObservable<Unit> Pop<T>() => _navigator.Pop<T>();
 
     public IObservable<T> PopAndPushNamed<T>(string routeName, object argument)
         where T : Route => _navigator.PopAndPushNamed<T>(routeName, argument);
