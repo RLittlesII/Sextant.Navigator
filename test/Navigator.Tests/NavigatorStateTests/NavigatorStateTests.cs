@@ -312,7 +312,8 @@ public sealed class NavigatorStateTests
             NavigatorState sut = new NavigatorStateFixture().WithNavigator(navigator);
 
             // When
-            await sut.RemoveRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
+            using var pageRoute = new PageRoute<TestViewModel>(new RouteSettings());
+            await sut.RemoveRouteBelow(pageRoute);
 
             // Then
             await navigator.Received().RemoveRouteBelow(Arg.Any<PageRoute<TestViewModel>>());
@@ -325,7 +326,8 @@ public sealed class NavigatorStateTests
             NavigatorState sut = new NavigatorStateFixture();
 
             // When
-            var result = await sut.RemoveRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
+            using var pageRoute = new PageRoute<TestViewModel>(new RouteSettings());
+            var result = await sut.RemoveRouteBelow(pageRoute);
 
             // Then
             result.Should().BeOfType<TestViewModel>();
@@ -374,7 +376,8 @@ public sealed class NavigatorStateTests
             NavigatorState sut = new NavigatorStateFixture().WithNavigator(navigator);
 
             // When
-            await sut.ReplaceRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
+            using var pageRoute = new PageRoute<TestViewModel>(new RouteSettings());
+            await sut.ReplaceRouteBelow(pageRoute);
 
             // Then
             await navigator.Received().ReplaceRouteBelow(Arg.Any<PageRoute<TestViewModel>>());
@@ -387,7 +390,8 @@ public sealed class NavigatorStateTests
             NavigatorState sut = new NavigatorStateFixture();
 
             // When
-            var result = await sut.ReplaceRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
+            using var pageRoute = new PageRoute<TestViewModel>(new RouteSettings());
+            var result = await sut.ReplaceRouteBelow(pageRoute);
 
             // Then
             result.Should().BeOfType<TestViewModel>();
