@@ -53,8 +53,8 @@ internal sealed class NavigatorMock : INavigator
     public IObservable<T> PopAndPushNamed<T>(string routeName, object argument)
         where T : Route => _navigator.PopAndPushNamed<T>(routeName, argument);
 
-    public IObservable<T> PopUntil<T>(Expression<Func<T, bool>> predicate)
-        where T : Route => _navigator.PopUntil(predicate);
+    /// <inheritdoc/>
+    public IObservable<Unit> PopUntil<T>(Expression<Func<Route<T>, bool>> predicate) => _navigator.PopUntil(predicate);
 
     public IObservable<TRoute> Push<TRoute>(TRoute route)
         where TRoute : Route => _navigator.Push(route);

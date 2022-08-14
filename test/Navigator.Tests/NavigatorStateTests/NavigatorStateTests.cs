@@ -1,3 +1,5 @@
+using System.Reactive;
+
 namespace Navigator.Tests;
 
 /// <summary>
@@ -45,7 +47,7 @@ public sealed class NavigatorStateTests
             var result = await sut.Pop<Route<TestViewModel>>();
 
             // Then
-            result.Should().BeOfType<Route<TestViewModel>>();
+            result.Should().BeOfType<NavigationResult>();
         }
     }
 
@@ -62,7 +64,7 @@ public sealed class NavigatorStateTests
             await sut.PopAndPushNamed<TestViewModel>(string.Empty, default(object));
 
             // Then
-            await navigator.Received().PopAndPushNamed<Route<TestViewModel>>(Arg.Any<string>(), Arg.Any<object>());
+            await navigator.Received().PopAndPushNamed<TestViewModel>(Arg.Any<string>(), Arg.Any<object>());
         }
 
         [Fact]
@@ -90,7 +92,7 @@ public sealed class NavigatorStateTests
             NavigatorState sut = new NavigatorStateFixture().WithNavigator(navigator);
 
             // When
-            await sut.PopUntil(Route<TestViewModel>.WithName<Route<TestViewModel>>("modal"));
+            await sut.PopUntil<TestViewModel>(Route.WithName<TestViewModel>("modal"));
 
             // Then
             await navigator.Received().PopUntil(Arg.Any<Expression<Func<Route<TestViewModel>, bool>>>());
@@ -106,7 +108,7 @@ public sealed class NavigatorStateTests
             var result = await sut.PopUntil(Route.WithName<Route<TestViewModel>>("modal"));
 
             // Then
-            result.Should().BeOfType<Route<TestViewModel>>();
+            result.Should().BeOfType<Unit>();
         }
     }
 
@@ -136,7 +138,7 @@ public sealed class NavigatorStateTests
             var result = await sut.Push(new PageRoute<TestViewModel>(new RouteSettings()));
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -170,7 +172,7 @@ public sealed class NavigatorStateTests
                 x => x is TestViewModel);
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -200,7 +202,7 @@ public sealed class NavigatorStateTests
             var result = await sut.PushNamed(new PageRoute<TestViewModel>(new RouteSettings()));
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -232,7 +234,7 @@ public sealed class NavigatorStateTests
             var result = await sut.PushReplacement(pageRoute);
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -264,7 +266,7 @@ public sealed class NavigatorStateTests
             var result = await sut.PushReplacementNamed(pageRoute);
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -296,7 +298,7 @@ public sealed class NavigatorStateTests
             var result = await sut.RemoveRoute(pageRoute);
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -326,7 +328,7 @@ public sealed class NavigatorStateTests
             var result = await sut.RemoveRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -358,7 +360,7 @@ public sealed class NavigatorStateTests
             var result = await sut.Replace(pageRoute);
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 
@@ -388,7 +390,7 @@ public sealed class NavigatorStateTests
             var result = await sut.ReplaceRouteBelow(new PageRoute<TestViewModel>(new RouteSettings()));
 
             // Then
-            result.Should().BeOfType<PageRoute<TestViewModel>>();
+            result.Should().BeOfType<TestViewModel>();
         }
     }
 }

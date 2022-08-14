@@ -91,8 +91,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="predicate">The predicate.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PopUntil<T>(Expression<Func<T, bool>> predicate)
-        where T : Route => _navigator.PopUntil(predicate);
+    public IObservable<Unit> PopUntil<T>(Expression<Func<Route<T>, bool>> predicate) => _navigator.PopUntil<T>(predicate);
 
     /// <summary>
     /// Push the given route onto the navigator.

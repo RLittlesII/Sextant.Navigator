@@ -73,8 +73,7 @@ public interface INavigator
     /// <typeparam name="TRoute">The route type.</typeparam>
     /// <param name="predicate">The predicate.</param>
     /// <returns>An observable sequence of routes.</returns>
-    IObservable<TRoute> PopUntil<TRoute>(Expression<Func<TRoute, bool>> predicate)
-        where TRoute : Route;
+    IObservable<Unit> PopUntil<T>(Expression<Func<Route<T>, bool>> predicate);
 
     /// <summary>
     /// Push the given route onto the navigator.
