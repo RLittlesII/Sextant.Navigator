@@ -1,31 +1,14 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{46B3A68A-9251-40DF-AC38-442C18BAC968}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution", ".solution", "{DCB6516B-423C-404C-9725-A3DAF8996EE5}"
-	ProjectSection(SolutionItems) = preProject
-		directory.build.props = directory.build.props
-		directory.build.targets = directory.build.targets
-		directory.packages.props = directory.packages.props
-		NuGet.config = NuGet.config
-		analyzers.ruleset = analyzers.ruleset
-		GitVersion.yml = GitVersion.yml
-		LICENSE = LICENSE
-		README.md = README.md
-		stylecop.json = stylecop.json
-		.gitignore = .gitignore
-	EndProjectSection
-EndProject
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{33587983-A528-48CA-B576-3291B90C026D}"
 	ProjectSection(SolutionItems) = preProject
-		src\directory.build.props = src\directory.build.props
-		src\directory.build.targets = src\directory.build.targets
+		src/directory.build.props = src/directory.build.props
+		src/directory.build.targets = src/directory.build.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{807D11DC-3275-428D-BFA4-735BECB7CD65}"
 	ProjectSection(SolutionItems) = preProject
-		test\directory.build.props = test\directory.build.props
-		test\directory.build.targets = test\directory.build.targets
+		test/directory.build.props = test/directory.build.props
+		test/directory.build.targets = test/directory.build.targets
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = ".build", ".build\.build.csproj", "{C60001F7-2C2E-4848-BE10-2D6F24854676}"
@@ -34,15 +17,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator", "src\Navigator\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Navigator.Tests", "test\Navigator.Tests\Navigator.Tests.csproj", "{45A794F4-0532-458A-B7BF-2DDF352191BD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{00627D29-DBFC-4D94-A874-D540EC877443}"
+	ProjectSection(SolutionItems) = preProject
+		.config/dotnet-tools.json = .config/dotnet-tools.json
+		build.cmd = build.cmd
+		build.sh = build.sh
+		build.ps1 = build.ps1
+		.codecov.yml = .codecov.yml
+		azure-pipelines.yml = azure-pipelines.yml
+		azure-pipelines.nuke.yml = azure-pipelines.nuke.yml
+		GitVersion.yml = GitVersion.yml
+		LICENSE = LICENSE
+		README.md = README.md
+		.gitignore = .gitignore
+		directory.build.props = directory.build.props
+		directory.packages.props = directory.packages.props
+		directory.build.targets = directory.build.targets
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{5ACB31FA-B180-4E4D-83E7-DC1D50B5BADB}"
+	ProjectSection(SolutionItems) = preProject
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{223F8D21-EEE7-4302-8535-299592549BFB}"
+	ProjectSection(SolutionItems) = preProject
+		.github/workflows/ci.yml = .github/workflows/ci.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{C60001F7-2C2E-4848-BE10-2D6F24854676} = {46B3A68A-9251-40DF-AC38-442C18BAC968}
-		{C7BAB3AE-64B2-44B8-885B-7B63E6591823} = {33587983-A528-48CA-B576-3291B90C026D}
-		{45A794F4-0532-458A-B7BF-2DDF352191BD} = {807D11DC-3275-428D-BFA4-735BECB7CD65}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{C60001F7-2C2E-4848-BE10-2D6F24854676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -55,5 +60,12 @@ Global
 		{45A794F4-0532-458A-B7BF-2DDF352191BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A794F4-0532-458A-B7BF-2DDF352191BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A794F4-0532-458A-B7BF-2DDF352191BD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C60001F7-2C2E-4848-BE10-2D6F24854676} = {00627D29-DBFC-4D94-A874-D540EC877443}
+		{C7BAB3AE-64B2-44B8-885B-7B63E6591823} = {33587983-A528-48CA-B576-3291B90C026D}
+		{45A794F4-0532-458A-B7BF-2DDF352191BD} = {807D11DC-3275-428D-BFA4-735BECB7CD65}
+		{5ACB31FA-B180-4E4D-83E7-DC1D50B5BADB} = {00627D29-DBFC-4D94-A874-D540EC877443}
+		{223F8D21-EEE7-4302-8535-299592549BFB} = {5ACB31FA-B180-4E4D-83E7-DC1D50B5BADB}
 	EndGlobalSection
 EndGlobal

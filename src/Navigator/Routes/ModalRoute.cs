@@ -21,9 +21,7 @@ public class ModalRoute : TransitionRoute
     /// Adds a scoped callback for when popped.
     /// </summary>
     /// <param name="callback">The call back.</param>
-    public void AddScopedWillPopCallback(Action callback)
-    {
-    }
+    public void AddScopedWillPopCallback([NotNull] Action callback) => callback.Invoke();
 }
 
 /// <summary>

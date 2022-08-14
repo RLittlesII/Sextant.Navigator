@@ -3,6 +3,7 @@
 [DotNetVerbosityMapping]
 [MSBuildVerbosityMapping]
 [NuGetVerbosityMapping]
+[LocalBuildConventions]
 internal partial class Navigator : NukeBuild,
     ICanRestoreWithDotNetCore,
     ICanBuildWithDotNetCore,
