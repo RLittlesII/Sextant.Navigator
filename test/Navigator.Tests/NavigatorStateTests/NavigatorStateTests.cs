@@ -1,5 +1,8 @@
 namespace Navigator.Tests;
 
+/// <summary>
+/// Tests the <see cref="NavigatorState"/>.
+/// </summary>
 public sealed class NavigatorStateTests
 {
     public class TheNavigatorProperty
@@ -193,7 +196,6 @@ public sealed class NavigatorStateTests
 
             // When
             var result = await sut.PushNamed(new PageRoute<TestViewModel>(new RouteSettings()));
-
 
             // Then
             result.Should().BeOfType<PageRoute<TestViewModel>>();

@@ -15,10 +15,8 @@
       ]
     },
     "gitversion.tool": {
-      "version": "5.0.0-beta5.40",
-      "commands": [
-        "dotnet-gitversion"
-      ]
+      "version": "5.10.3",
+      "commands": ["dotnet-gitversion"]
     },
     "dotnet-reportgenerator-globaltool": {
       "version": "4.2.5",
@@ -39,10 +37,8 @@
       ]
     },
     "codecov.tool": {
-      "version": "1.7.2",
-      "commands": [
-        "codecov"
-      ]
+      "version": "1.13.0",
+      "commands": ["codecov"]
     }
   }
 }

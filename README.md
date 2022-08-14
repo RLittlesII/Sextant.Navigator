@@ -1,6 +1,32 @@
 # Sextant.Navigator
-A reactiveui routing library based on flutters routing
+An observable routing library based on flutters routing
 
+# Status
+<!-- badges -->
+[![github-release-badge]][github-release]
+[![github-license-badge]][github-license]
+[![codecov-badge]][codecov]
+<!-- badges -->
+
+<!-- history badges -->
+| GitHub Actions |
+| -------------- |
+| [![github-badge]][github] |
+| [![github-history-badge]][github] |
+<!-- history badges -->
+
+<!-- generated references -->
+[github-release]: https://github.com/rlittlesii/Sextant.Navigator/releases/latest
+[github-release-badge]: https://img.shields.io/github/release/rlittlesii/Sextant.Navigator.svg?logo=github&style=flat "Latest Release"
+[github-license]: https://github.com/rlittlesii/Sextant.Navigator/blob/master/LICENSE
+[github-license-badge]: https://img.shields.io/github/license/rlittlesii/Sextant.Navigator.svg?style=flat "License"
+[codecov]: https://codecov.io/gh/rlittlesii/Sextant.Navigator
+[codecov-badge]: https://img.shields.io/codecov/c/github/rlittlesii/Sextant.Navigator.svg?color=E03997&label=codecov&logo=codecov&logoColor=E03997&style=flat "Code Coverage"
+
+[github]: https://github.com/rlittlesii/Sextant.Navigator/actions?query=workflow%3Aci
+[github-badge]: https://img.shields.io/github/workflow/status/rlittlesii/Sextant.Navigator/ci.svg?label=github&logo=github&color=b845fc&logoColor=b845fc&style=flat "GitHub Actions Status"
+[github-history-badge]: https://buildstats.info/github/chart/rlittlesii/Sextant.Navigator?includeBuildsFromPullRequest=false "GitHub Actions History"
+<!-- generated references -->
 ## Flutter Api
 https://api.flutter.dev/flutter/widgets/Navigator/Navigator.html
 https://api.flutter.dev/flutter/widgets/RouteFactory.html

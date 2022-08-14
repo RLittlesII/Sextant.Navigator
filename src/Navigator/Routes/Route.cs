@@ -7,6 +7,7 @@ namespace Navigator.Routes;
 /// <summary>
 /// https://api.flutter.dev/flutter/widgets/Route-class.html.
 /// </summary>
+[SuppressMessage("ReSharper", "RedundantNullableFlowAttribute", Justification = "Roslyn doesn't understand implicit vs explicit null so I prefer to state the obvious my way without inline compiler conversation.")]
 public class Route : DisposableBase
 {
     /// <summary>
@@ -98,15 +99,13 @@ public class Route : DisposableBase
     /// previousRoute will be null if there's no previous route.
     /// </summary>
     /// <param name="route">The route.</param>
-    protected void DidChangePrevious(Route route)
-    {
-    }
+    protected void DidChangePrevious([NotNull] Route route) => route.DidChangePrevious(this);
 
     /// <summary>
     /// The route was popped or is otherwise being removed somewhat gracefully.
     /// </summary>
     /// <param name="route">The route.</param>
-    protected virtual void DidComplete(Route route)
+    protected virtual void DidComplete([NotNull] Route route)
     {
     }
 

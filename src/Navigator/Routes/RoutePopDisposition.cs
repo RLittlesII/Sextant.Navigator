@@ -1,7 +1,7 @@
 ﻿namespace Navigator.Routes;
 
 /// <summary>
-/// https://api.flutter.dev/flutter/widgets/RoutePopDisposition-class.html
+/// https://api.flutter.dev/flutter/widgets/RoutePopDisposition-class.html.
 /// </summary>
 public enum RoutePopDisposition
 {

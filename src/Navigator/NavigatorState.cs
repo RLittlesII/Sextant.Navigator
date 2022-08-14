@@ -44,9 +44,7 @@ public class NavigatorState
     /// Complete the lifecycle for a route that has been popped off the navigator.
     /// </summary>
     /// <param name="route">The route.</param>
-    public void FinalizeRoute(Route route)
-    {
-    }
+    public void FinalizeRoute([NotNull] Route route) => route.Dispose();
 
     /// <summary>
     /// Called when this object is inserted into the tree.
@@ -80,7 +78,7 @@ public class NavigatorState
     /// <param name="predicate">The predicate.</param>
     /// <returns>An observable sequence of routes.</returns>
     public IObservable<T> PopUntil<T>(Expression<Func<T, bool>> predicate)
-        where T : Route => _navigator.PopUntil<T>(predicate);
+        where T : Route => _navigator.PopUntil(predicate);
 
     /// <summary>
     /// Push the given route onto the navigator.
@@ -116,7 +114,7 @@ public class NavigatorState
     /// <typeparam name="T">The route type.</typeparam>
     /// <param name="route">The route.</param>
     /// <returns>An observable sequence of routes.</returns>
-    public IObservable<T> PushNamedAndRemoveUntil<T>(Route<T> route) => Observable.Return(default(T));
+    public IObservable<T> PushNamedAndRemoveUntil<T>(Route<T> route) => _navigator.PushNamedAndRemoveUntil(route).Select(_ => default(T)!);
 
     /// <summary>
     /// Replace the current route of the navigator by pushing the given route and then disposing the previous route once the new route has finished animating in.
