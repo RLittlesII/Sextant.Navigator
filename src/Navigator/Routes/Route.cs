@@ -145,8 +145,8 @@ public class Route : DisposableBase
 /// <summary>
 /// https://api.flutter.dev/flutter/widgets/Route-class.html.
 /// </summary>
-/// <typeparam name="T">The argument type.</typeparam>
-public class Route<T> : Route
+/// <typeparam name="TViewModel">The argument type.</typeparam>
+public class Route<TViewModel> : Route
 {
     /// <summary>
     /// Initializes a new instance of the <see cref="Route{T}"/> class.
