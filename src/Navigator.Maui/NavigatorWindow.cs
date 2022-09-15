@@ -6,6 +6,9 @@ using Routing;
 
 namespace Navigator.Maui;
 
+/// <summary>
+/// A navigator window that implements <see cref="IWindow"/>.
+/// </summary>
 public class NavigatorWindow : Window, IWindow
 {
     /// <summary>
@@ -13,9 +16,6 @@ public class NavigatorWindow : Window, IWindow
     /// </summary>
     public NavigatorWindow()
     {
-        PoppedEvents = Observable.Empty<RoutingEvent>();
-        PoppedToRootEvents = Observable.Empty<RoutingEvent>();
-        PushedEvents = Observable.Empty<RoutingEvent>();
         Routes = Enumerable.Empty<IRoute>().ToList().AsReadOnly();
 
         PoppedEvents = Observable.FromEvent<EventHandler<ModalPoppedEventArgs>, ModalPoppedEventArgs>(

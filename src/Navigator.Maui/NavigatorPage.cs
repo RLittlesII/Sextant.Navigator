@@ -5,6 +5,9 @@ using Routing;
 
 namespace Navigator.Maui;
 
+/// <summary>
+/// A navigator page that implements <see cref="IFrame"/>.
+/// </summary>
 public class NavigatorPage : NavigationPage, IFrame
 {
     /// <summary>
@@ -12,6 +15,7 @@ public class NavigatorPage : NavigationPage, IFrame
     /// </summary>
     public NavigatorPage()
     {
+        Routes = Enumerable.Empty<IRoute>().ToList().AsReadOnly();
         PoppedEvents = Observable.FromEvent<EventHandler<NavigationEventArgs>, NavigationEventArgs>(
                 eventHandler =>
                 {
