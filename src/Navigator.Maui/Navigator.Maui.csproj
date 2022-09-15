@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.Reactive" />
+        <PackageReference Include="ReactiveMarbles.Locator" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Routing\Routing.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Microsoft.Maui.Controls">
+        <HintPath>..\..\..\..\..\..\..\..\usr\local\share\dotnet\packs\Microsoft.Maui.Controls.Ref.any\6.0.486\ref\net6.0\Microsoft.Maui.Controls.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

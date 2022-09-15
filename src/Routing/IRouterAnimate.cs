@@ -1,5 +1,8 @@
-namespace Router;
+namespace Routing;
 
+/// <summary>
+/// Animation router.
+/// </summary>
 public interface IRouterAnimate : IRouter
 {
     /// <summary>

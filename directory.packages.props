@@ -27,6 +27,7 @@
 
     <ItemGroup>
         <PackageVersion Include="System.Reactive" Version="5.0.0" />
+        <PackageVersion Include="ReactiveMarbles.Locator" Version="1.1.4" />
     </ItemGroup>
 
     <ItemGroup>

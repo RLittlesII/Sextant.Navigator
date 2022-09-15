@@ -1,12 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Generic")]
-
-namespace Router;
+namespace Routing;
 
 /// <summary>
 /// Represents an untyped route.
 /// </summary>
+[SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Generic")]
 public interface IRoute : IRoute<object>
 {
 }
@@ -15,6 +14,7 @@ public interface IRoute : IRoute<object>
 /// Represents an type constrained route.
 /// </summary>
 /// <typeparam name="T">The route type.</typeparam>
+[SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Generic")]
 public interface IRoute<T>
 {
     /// <summary>

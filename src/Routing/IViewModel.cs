@@ -1,4 +1,4 @@
-namespace Router;
+namespace Routing;
 
 /// <summary>
 /// Interface representing a  view model.
