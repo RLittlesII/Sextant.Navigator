@@ -23,20 +23,23 @@ public class TestRoute : IRoute<TestViewModel>
 
 public class TestViewModel : INavigable
 {
+    /// <inheritdoc/>
     public IObservable<Unit> Initializing(INavigationParameter navigationParameter)
     {
         IsInitialized = true;
         return Observable.Return(Unit.Default);
     }
 
+    /// <inheritdoc/>
     public IObservable<Unit> NavigatedFrom(INavigationParameter navigationParameter)
     {
-        return null;
+        return Observable.Return(Unit.Default);
     }
 
+    /// <inheritdoc/>
     public IObservable<Unit> NavigatedTo(INavigationParameter navigationParameter)
     {
-        return null;
+        return Observable.Return(Unit.Default);
     }
 
     public bool IsInitialized { get; set; }

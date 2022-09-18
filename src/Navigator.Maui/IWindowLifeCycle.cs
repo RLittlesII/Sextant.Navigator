@@ -1,5 +1,8 @@
 namespace Navigator.Maui;
 
+/// <summary>
+/// Interface representing a <see cref="NavigatorWindow"/> life cycle.
+/// </summary>
 public interface IWindowLifeCycle
 {
     /// <summary>Occurs when the Window is created.</summary>
