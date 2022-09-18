@@ -6,4 +6,9 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+        <PackageReference Include="System.Reactive" />
+        <PackageReference Include="ReactiveMarbles.Locator" />
+    </ItemGroup>
+ 
 </Project>
